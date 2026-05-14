@@ -156,7 +156,7 @@ describe('ListComponent', () => {
         );
         await user.click(await screen.findByRole('option', { name: 'George' }));
         await user.click(
-          within(firstRow).getByRole('button', { name: /assign/i }),
+          within(firstRow).getByRole('button', { name: /^assign$/i }),
         );
 
         expect(backend.assign).toHaveBeenCalledWith(0, 2);
@@ -180,7 +180,7 @@ describe('ListComponent', () => {
         );
         await user.click(await screen.findByRole('option', { name: 'George' }));
         await user.click(
-          within(firstRow).getByRole('button', { name: /assign/i }),
+          within(firstRow).getByRole('button', { name: /^assign$/i }),
         );
 
         expect(
@@ -201,7 +201,11 @@ describe('ListComponent', () => {
         );
 
         expect(backend.complete).toHaveBeenCalledWith(0, true);
-        await waitFor(() => expect(firstRow).toHaveTextContent(/Done:\s*true/));
+        await waitFor(() =>
+          expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
+            /Done:\s*true/,
+          ),
+        );
       });
     });
 

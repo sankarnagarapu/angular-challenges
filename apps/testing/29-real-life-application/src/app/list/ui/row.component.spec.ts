@@ -64,7 +64,7 @@ describe('RowComponent', () => {
 
         await user.click(screen.getByRole('combobox', { name: /assign to/i }));
         await user.click(await screen.findByRole('option', { name: 'titi' }));
-        await user.click(screen.getByRole('button', { name: /assign/i }));
+        await user.click(screen.getByRole('button', { name: /^assign$/i }));
 
         expect(assign).toHaveBeenCalledWith({ ticketId: 0, userId: 1 });
       });
