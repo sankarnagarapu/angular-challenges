@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  ComponentStore,
-  OnStateInit,
-  tapResponse,
-} from '@ngrx/component-store';
+import { ComponentStore, OnStateInit } from '@ngrx/component-store';
 import { concatLatestFrom } from '@ngrx/effects';
+import { tapResponse } from '@ngrx/operators';
 import { pipe } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
 import { PARAM_TICKET_ID } from '../app.route';
