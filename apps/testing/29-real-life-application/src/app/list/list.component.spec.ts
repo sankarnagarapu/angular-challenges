@@ -161,7 +161,9 @@ describe('ListComponent', () => {
 
         expect(backend.assign).toHaveBeenCalledWith(0, 2);
         await waitFor(() =>
-          expect(firstRow).toHaveTextContent(/Assignee:\s*George/),
+          expect(screen.getAllByRole('listitem')[0]).toHaveTextContent(
+            /Assignee:\s*George/,
+          ),
         );
       });
     });
